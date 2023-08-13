@@ -15,6 +15,8 @@ import DonateScreen from "./screens/donate";
 import Adopt from "./screens/Adopt";
 import ResourcesScreen from "./screens/Resources";
 import Emergency from "./screens/emergency";
+import TourScreen from "./screens/tour";
+import ChatScreen from "./screens/ChatScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -85,6 +87,16 @@ export default function App() {
         <Stack.Screen
           name="EmergencyScreen"
           component={Emergency}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="TourScreen"
+          component={TourScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="ChatScreen"
+          component={ChatScreen}
           options={{ headerShown: false }}
         ></Stack.Screen>
       </Stack.Navigator>

@@ -67,6 +67,46 @@ const ResourcesScreen = ({ navigation }) => {
         <Text style={styles.resourcesText}>Resources</Text>
       </View>
       <View style={styles.lowerPart}>
+        <View
+          style={{
+            flexDirection: "row",
+            gap: 15,
+            justifyContent: "space-between",
+            padding: 10,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+              color: "black",
+              marginBottom: 10,
+            }}
+          >
+            Chat With Us
+          </Text>
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#1E5128",
+              padding: 10,
+              borderRadius: 15,
+              width: "30%",
+            }}
+            onPress={() => navigation.navigate("ChatScreen")}
+          >
+            <Text
+              style={{
+                alignSelf: "center",
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "#E5D9B6",
+                marginBottom: 10,
+              }}
+            >
+              Chat
+            </Text>
+          </TouchableOpacity>
+        </View>
         <Text style={styles.locationText}>
           Write area's name here and see area specific cases
         </Text>
@@ -78,14 +118,6 @@ const ResourcesScreen = ({ navigation }) => {
           />
           <TouchableOpacity style={styles.micButton}>
             <FontAwesome name="microphone" size={24} color="darkgreen" />
-          </TouchableOpacity>
-        </View>
-        <View>
-          <Text>Need Emergency Help?</Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("EmergencyScreen")}
-          >
-            <Text>Guide Me</Text>
           </TouchableOpacity>
         </View>
         <Text style={styles.seeVideosText}>See Videos</Text>
@@ -161,7 +193,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   locationText: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
     color: "black",
     marginBottom: 10,

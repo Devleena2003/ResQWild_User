@@ -1,10 +1,10 @@
 import axios from "axios";
 const API = axios.create({
-  baseURL: process.env.SERVER_DOMAIN,
+  baseURL: process.env.SERVER_URL,
 });
 
 export const UserData = (token) => {
-  return API.get("/getUserData", null, {
+  return API.get("/getUserData", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

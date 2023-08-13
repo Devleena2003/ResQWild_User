@@ -60,7 +60,6 @@ export default function InfoData({ data }) {
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
             setModalVisible(!modalVisible);
           }}
         >
@@ -73,7 +72,7 @@ export default function InfoData({ data }) {
               <Text style={styles.modalText}>{data.des}</Text>
               <TouchableOpacity
                 style={[styles.button, styles.buttonClose]}
-                onPress={() => navigation.navigate()}
+                onPress={() => Alert.alert("Success")}
               >
                 <Text style={styles.textStyle}>Donate</Text>
               </TouchableOpacity>

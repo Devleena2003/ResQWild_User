@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -18,6 +18,7 @@ import * as ImagePicker from "expo-image-picker";
 import * as VideoPicker from "expo-image-picker";
 import { ScrollView } from "react-native";
 import { addReport } from "../services/api.report";
+import { UserData } from "../services/api.user";
 
 const ReportScreen = ({ navigation }) => {
   const [title, setTitle] = useState("");
@@ -25,21 +26,41 @@ const ReportScreen = ({ navigation }) => {
   const [description, setDescription] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [reportedBy, setreportedBy] = useState("");
+
+  // const userDetails = async () => {
+  //   try {
+  //     console.log("Loading");
+  //     const result = await UserData();
+  //     console.log("result", result);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // console.log(reportedBy);
 
   const handleSubmit = async () => {
-    if (title === "" || location === "" || description === "") {
+    let req;
+    if (
+      title === "" ||
+      location === "" ||
+      description === "" ||
+      reportedBy === ""
+    ) {
       Alert.alert("Enter all the fields");
     } else {
-      const req = {
+      req = {
         title: title,
         location: location,
         description: description,
+        reportedBy: reportedBy,
       };
 
       try {
-        console.log("in try block");
+        console.log(req);
         const res = await addReport(req);
         console.log(res.data);
+        navigation.navigate("Contact");
       } catch (error) {
         console.log(error);
       }
@@ -100,6 +121,47 @@ const ReportScreen = ({ navigation }) => {
           bottom: "20%",
         }}
       >
+        <View style={{ position: "relative", left: 10, bottom: 10 }}>
+          <Text style={{ color: "#1E5128" }}>Name</Text>
+        </View>
+        {/* <View
+          style={{
+            borderWidth: 1,
+            borderColor: "#1E5128",
+            borderRadius: 20,
+            width: "100%",
+            height: 60,
+            marginBottom: 20,
+            alignSelf: "center",
+          }}
+        >
+          <TextInput
+            style={{ height: 50, flex: 1, padding: 10 }}
+            value={name}
+            placeholderTextColor="#0F6408"
+            onChangeText={(text) => setTitle(text)}
+          />
+          
+        </View> */}
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: "#1E5128",
+            borderRadius: 20,
+            width: "100%",
+            height: 60,
+            marginBottom: 20,
+
+            alignSelf: "center",
+          }}
+        >
+          <TextInput
+            style={{ height: 50, flex: 1, padding: 10 }}
+            value={reportedBy}
+            placeholderTextColor="#0F6408"
+            onChangeText={(text) => setreportedBy(text)}
+          />
+        </View>
         <View style={{ position: "relative", left: 10, bottom: 10 }}>
           <Text style={{ color: "#1E5128" }}>Incident</Text>
         </View>

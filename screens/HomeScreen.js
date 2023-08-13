@@ -201,11 +201,11 @@ const HomeScreen = ({ navigation }) => {
           <ImageBackground
             source={require("../assets/info.jpg")}
             imageStyle={{ borderRadius: 15 }}
-            style={{ padding: 25, borderRadius: 15, elevation: 3 }}
+            style={{ padding: 20, borderRadius: 15, elevation: 3 }}
             blurRadius={3}
           >
-            <Text style={{ fontSize: 23, fontWeight: "bold", color: "#fff" }}>
-              Resources
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: "#fff" }}>
+              First Aid & Resources
             </Text>
 
             <Text
@@ -258,6 +258,7 @@ const HomeScreen = ({ navigation }) => {
 
             width: "40%",
           }}
+          onPress={() => navigation.navigate("TourScreen")}
         >
           <ImageBackground
             source={require("../assets/forest.jpg")}
@@ -318,7 +319,7 @@ const HomeScreen = ({ navigation }) => {
           Trending Now
         </Text>
       </View>
-      <CarouselCards />
+      <CarouselCards onPress={() => navigation.navigate("ResourcesScreen")} />
     </ScrollView>
   );
 };
